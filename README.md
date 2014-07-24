@@ -27,8 +27,8 @@ end
 ###1. Include **Compass** and the **mixin file**.
 
 ```scss
-@import "compass"
-@import "sprite-background"
+@import "compass";
+@import "sprite-background";
 ```
 
 ###2. Initialization by using the `get_sprites_obj()` function.
