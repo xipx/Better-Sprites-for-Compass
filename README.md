@@ -6,7 +6,7 @@ Using these mixins to make sprites a lot easier.
 
 ##How to use
 ###Remove the random string of sprite filename
-Add the following code to your config.rb. This little piece of code can remove the random string appended to sprite filename.
+Add the following code to your `config.rb`. This little piece of code can remove the random string appended to sprite filename.
 ```ruby
 on_sprite_saved do |filename|
   if File.exists?(filename)
