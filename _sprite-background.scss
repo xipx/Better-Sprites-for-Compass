@@ -1,0 +1,39 @@
+@function get_sprites_obj($dirs...) {
+  $sprites_obj: ();
+
+  @each $dir in $dirs {
+    $sprite_map: sprite-map($dir + "/*.png", $spacing: 5px);
+    $obj: ($dir + '_url': sprite-url($sprite_map), $dir + '_map': $sprite_map);
+    $sprites_obj: map-merge($sprites_obj, $obj);
+  }
+  @return $sprites_obj;
+}
+
+@mixin _sprite-background($name, $dir, $retina: false, $dimension: true, $offset-left: 0px, $offset-top: 0px) {
+  $img_url: map-get($sprites_obj, $dir + '_url');
+  $map: map-get($sprites_obj, $dir + '_map');
+
+  background-image: $img_url;
+  $pos: sprite-position($map, $name);
+  background-position: $offset-left + nth($pos,1) $offset-top + nth($pos,2);
+  background-repeat: no-repeat;
+  display: block;
+  @if $dimension == true {
+    $sprite-path: sprite-file($map, $name);
+    height: image-height($sprite-path);
+    width: image-width($sprite-path);
+  }
+
+  @if $retina == true {
+    $img_url_retina: map_get($sprites_obj, $dir + '_retina_url');
+    $map-retina: map_get($sprites_obj, $dir + '_retina_map');
+    $multiplier: 2;
+    @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 2) {
+      $ypos: round(nth(sprite-position($map-retina, $name), 2) / $multiplier);
+      background-position: 0 $ypos;
+      $sprite-path: $dir + "_retina.png";
+      @include background-size(round(image-width($sprite-path) / $multiplier) round(image-height($sprite-path) / $multiplier));
+      background-image: $img_url_retina;
+    }
+  }
+}
