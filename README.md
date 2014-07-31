@@ -58,7 +58,7 @@ $sprites_obj: get_sprites_obj( foo, foo_retina );
 
 where image-files in the `foo` folder are those regular version, and in the `foo_retina` folder are retina version.
 
-Note that, the `_retina` suffix is **required** and the filename should be **same**.
+Note that, the `_retina` suffix is **required** and the filename of Regular ones and Retina ones should be **same**.
 
 
 ###3.Use the mixin
