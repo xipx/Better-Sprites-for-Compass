@@ -82,3 +82,8 @@ If you need, you can adjust the offsets of `background-position` by doing this :
 @include _sprite-background(bar, foo, $offset-left:10px, $offset-top:5px);
 ```
 
+##*Requirement*
+To use this mixin you need **Sass 3.3 or later** version. You can easily install it by the following command:
+```ruby
+gem install compass --pre
+```
