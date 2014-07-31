@@ -87,3 +87,8 @@ To use this mixin you need **Sass 3.3 or later** version. You can easily install
 ```ruby
 gem install compass --pre
 ```
+
+And if you are encountering some kind of Encoding-Issue on Windows, be sure that you have the following code in the first line of your **config.rb** file.
+```ruby
+Encoding.default_external = "utf-8"
+```
